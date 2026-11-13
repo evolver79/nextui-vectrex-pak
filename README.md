@@ -29,10 +29,31 @@ isn't ours to share), but NextUI can show them:
    [cosmo0/retropie-overlays](https://github.com/cosmo0/retropie-overlays) (`_sources/games/vectrex`).
 2. Put the PNGs in `Overlays/VECTREX/` on the SD card. Naming them after the ROM (`Scramble (World).png`) makes them
    easy to find.
-3. In a game, open the menu, pick the overlay under **Overlay**, and save the settings for that game.
+3. In a game, open the menu, pick the overlay under **Overlay**, and save the settings for that game. NextUI reads the
+   file when you pick it, so after changing an overlay file, pick it again (or restart the game).
 
-NextUI draws the overlay over the whole 1024×768 screen, while the game picture sits in the middle, about 617×768. Images
-made for RetroArch (often 1920×1080) may need resizing or cropping first to line up.
+### Making them fit the Brick
+
+The images in those collections are portrait pictures of just the Vectrex screen, in all sizes, and most are solid
+colour. Used as they are they don't line up and hide the game. What works on the Brick:
+
+- **Canvas:** 1024×768, transparent. NextUI stretches the overlay over the whole screen.
+- **Placement:** stretch the overlay to **618×768 at x=203, y=0**. That's where the game picture sits (vecx's 33:41
+  aspect ratio with the default Aspect scaling), so the overlay's frame matches the edges of the picture.
+- **Opacity:** for overlays that are solid in the middle, about **25%**. The lines take the zone's colour and the
+  background gets a dark tint, close to the real plastic. At 35% the lines look dull; lower and the colour fades.
+  Overlays that already have a see-through middle (most 3D Imager ones, for example) can stay as they are.
+
+[`tools/fit-overlay.swift`](tools/fit-overlay.swift) does all three on macOS (no extra installs):
+
+```sh
+swiftc -O -o fit-overlay tools/fit-overlay.swift
+./fit-overlay scramble.png "Scramble (World).png"         # 25% by default
+./fit-overlay scramble.png "Scramble (World).png" 0.3     # or another opacity
+```
+
+Run it over a whole folder and name each result after its ROM. Not every game has an overlay in these collections
+(Polar Rescue and Pole Position don't, nor do most prototypes).
 
 ## Controls
 

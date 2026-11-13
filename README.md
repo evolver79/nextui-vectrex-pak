@@ -85,6 +85,11 @@ the build that was tested.
 
 Pushing a tag `vX.Y.Z` that matches `version` in `pak.json` makes a GitHub release with the zip attached.
 
+## Made with an AI assistant
+
+This pak was built with the help of an LLM (Claude, by Anthropic): the scripts, configuration and documentation were
+written in conversation with it, and tested on a real TrimUI Brick.
+
 ## License
 
 The pak's own files are MIT ([LICENSE](LICENSE)). The vecx core is GPLv3 ([LICENSE-vecx](LICENSE-vecx)); the release zip

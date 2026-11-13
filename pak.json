@@ -1,0 +1,15 @@
+{
+  "name": "VECTREX",
+  "version": "v1.0.0",
+  "type": "EMU",
+  "description": "GCE Vectrex using the libretro vecx core. The Vectrex system ROM is built into the core, so no BIOS is needed.",
+  "author": "evolver79",
+  "repo_url": "https://github.com/evolver79/nextui-vectrex-pak",
+  "release_filename": "VECTREX.pak.zip",
+  "changelog": {
+    "v1.0.0": "First release: vecx built for NextUI (software rendering, RGB565, no libGL), buttons 1-4 on B/A/Y/X."
+  },
+  "platforms": [
+    "tg5040"
+  ]
+}
